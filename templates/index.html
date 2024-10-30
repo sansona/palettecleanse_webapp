@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>palettecleanse - web app</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: black;
+        }
+        .faint-background {
+            position: fixed;
+            width: 18%;
+            height: 100%;
+            top: 0;
+            z-index: 1;
+            background-color: #808080;
+            opacity: 0.3;
+        }
+        .left-background {
+            left: 0;
+        }
+        .right-background {
+            right: 0;
+        }
+        .hero {
+            background-image: url('path/to/your/image.jpg');
+            background-size: cover;
+            color: black;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .upload-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .btn-custom {
+            background-color: #6c757d;
+            border: none;
+            color: white;
+            transition: background-color 0.3s;
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+        .btn-custom:hover {
+            background-color: #5a6268;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .small-dropdown {
+            width: 80px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .github-link {
+            position: fixed;
+            bottom: 20px; 
+            left: 50%; /* center horizontally */
+            transform: translateX(-50%); /* adjust to center */
+            font-size: 14px;
+            color: #6c757d;
+            text-decoration: none; /* this makes sure it's a link */
+        }
+        .github-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="faint-background left-background"></div>
+    <div class="faint-background right-background"></div>
+
+    <div class="hero">
+        <h1>palettecleanse web app</h1>
+        <h4>palettecleanse converts images to custom color palettes</h4>
+    </div>
+    
+    <div class="container mt-5">
+        <div class="upload-form text-center">
+            <h2>Upload an Image</h2>
+            <form action="/upload" method="post" enctype="multipart/form-data" class="text-center">
+                <div class="form-group text-center">
+                    <input type="file" class="form-control-file" name="image" accept="image/*" required>
+                </div>
+                <div class="form-group text-center">
+                    <label for="integerInput"><b>Number of colors:</b></label>
+                    <select id="integerInput" name="integerInput" class="form-control small-dropdown" required>
+                        {% for i in range(5, 21) %}
+                            <option value="{{ i }}" {% if i == 5 %}selected{% endif %}>{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-custom btn-block">Convert!</button>
+            </form>
+        </div>
+    </div>
+
+    <a href="https://github.com/sansona/palettecleanse" target="_blank" class="github-link">
+        palettecleanse source code
+    </a>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
