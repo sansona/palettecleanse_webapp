@@ -1,5 +1,7 @@
 # palettecleanse webapp
-Code for web app version of [`palettecleanse`](https://github.com/sansona/palettecleanse)
+Code for [web app](https://palettecleanse.pythonanywhere.com/) version of [`palettecleanse`](https://github.com/sansona/palettecleanse). 
+
+The webapp uses a lite version of `palettecleanse` that removes `plotly` functionality.
 
 ![index](images/index.png "Index")
 ![result](images/result.png "Result")

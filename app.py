@@ -6,7 +6,7 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 from flask import Flask, jsonify, render_template, request, send_from_directory
-from palettecleanse.palette import Palette
+from palettecleanse_lite.palette import Palette
 
 app = Flask(__name__)
 
@@ -87,5 +87,8 @@ def cleanup():
     return jsonify({"message": response_messages}), 200
 
 
+# uncomment if running locally; otherwise will cause issues when deployed
+"""
 if __name__ == "__main__":
     app.run(debug=True)
+"""
